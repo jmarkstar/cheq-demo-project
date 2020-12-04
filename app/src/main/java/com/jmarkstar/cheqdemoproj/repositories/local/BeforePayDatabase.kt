@@ -2,6 +2,7 @@ package com.jmarkstar.cheqdemoproj.repositories.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.jmarkstar.cheqdemoproj.repositories.local.entities.Bank
 import com.jmarkstar.cheqdemoproj.repositories.local.entities.BankAccount
 import com.jmarkstar.cheqdemoproj.repositories.local.entities.SpendingCategory
@@ -19,7 +20,8 @@ import com.jmarkstar.cheqdemoproj.repositories.local.daos.TransactionDao
 ],
     version = 1,
     exportSchema = false)
-internal abstract class BeforePayDatabase: RoomDatabase() {
+@TypeConverters(Converters::class)
+abstract class BeforePayDatabase: RoomDatabase() {
 
     abstract val bankDao: BankDao
     abstract val bankAccountDao: BankAccountDao
