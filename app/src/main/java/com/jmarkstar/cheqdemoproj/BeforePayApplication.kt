@@ -1,7 +1,6 @@
 package com.jmarkstar.cheqdemoproj
 
 import android.app.Application
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.jmarkstar.cheqdemoproj.common.CrashlyticsTree
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
@@ -18,8 +17,6 @@ class BeforePayApplication: Application() {
     private fun settingAppLogging() {
         if (BuildConfig.DEBUG)
             Timber.plant(Timber.DebugTree())
-
-        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
         Timber.plant(CrashlyticsTree())
     }
 }
