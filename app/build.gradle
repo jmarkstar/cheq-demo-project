@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -32,8 +34,15 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+
         release {
             minifyEnabled false
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -76,6 +85,12 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodel_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_viewmodel_version"
+
+    implementation "com.jakewharton.timber:timber:$timber_version"
+
+    implementation platform("com.google.firebase:firebase-bom:$firebase_BoM")
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
     // For local unit tests
     testImplementation "androidx.room:room-testing:$room_version"

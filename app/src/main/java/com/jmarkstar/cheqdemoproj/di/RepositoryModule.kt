@@ -7,6 +7,7 @@ import com.jmarkstar.cheqdemoproj.repositories.BalanceRepositoryImpl
 import com.jmarkstar.cheqdemoproj.repositories.TransactionRepository
 import com.jmarkstar.cheqdemoproj.repositories.TransactionRepositoryImpl
 import com.jmarkstar.cheqdemoproj.repositories.local.BeforePayDatabase
+import com.jmarkstar.cheqdemoproj.repositories.local.PrepopulateCallback
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -30,11 +31,15 @@ abstract class RepositoryModule {
 
         @Provides
         @Singleton
-        fun provideDatabase(@ApplicationContext appContext: Context/*, prepopulateCallback: RoomDatabase.Callback*/) =
+        fun provideDatabasePopulateCallback() = PrepopulateCallback()
+
+        @Provides
+        @Singleton
+        fun provideDatabase(@ApplicationContext appContext: Context, prepopulateCallback: PrepopulateCallback) =
                 Room.databaseBuilder(appContext,
                         BeforePayDatabase::class.java,
                         "before_pay.db")
-                        //.addCallback(prepopulateCallback)
+                        .addCallback(prepopulateCallback)
                         .build()
 
         @Provides

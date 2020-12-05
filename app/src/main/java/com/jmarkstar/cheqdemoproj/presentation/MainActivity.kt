@@ -24,5 +24,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("MainActivity", it.toString())
             }
         }
+
+        throw RuntimeException("Test Crash")
     }
 }
