@@ -76,6 +76,7 @@ kapt {
     correctErrorTypes true
 }
 
+//https://developer.android.com/training/dependency-injection/hilt-testing
 hilt {
     enableTransformForLocalTests = true
 }

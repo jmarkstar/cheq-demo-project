@@ -2,12 +2,12 @@ package com.jmarkstar.cheqdemoproj.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.jmarkstar.cheqdemoproj.R
 import com.jmarkstar.cheqdemoproj.repositories.BalanceRepository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -21,7 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             balanceRepository.getBalancesByBank().forEach {
-                Log.d("MainActivity", it.toString())
+                Timber.v(it.toString())
+            }
+
+            balanceRepository.getAllBankAccountsBalance().forEach {
+                Timber.v(it.toString())
             }
         }
     }

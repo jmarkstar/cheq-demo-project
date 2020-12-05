@@ -1,15 +1,27 @@
 package com.jmarkstar.cheqdemoproj.repositories.local.entities
 
+import android.content.ContentValues
 import androidx.room.Entity
 import androidx.room.Index
+import androidx.room.PrimaryKey
 import com.jmarkstar.cheqdemoproj.models.TransactionType
 
 @Entity(tableName = "transactions",
-    indices = [Index("bankAccountId")],
-    primaryKeys = ["id"])
+    indices = [Index("bankAccountId")])
 
-data class Transaction(val id: Int,
+data class Transaction(@PrimaryKey(autoGenerate = true) val id: Int? = null,
                        val bankAccountId: Int,
                        val type: TransactionType,
                        val amount: Double,
-                       val spendingCategoryId: Int? = null)
+                       val timestamp: Long,
+                       val spendingCategoryId: Int? = null) {
+
+    fun toContentValues() = ContentValues().apply {
+        if (id != null) this.put("id", id)
+        this.put("bankAccountId", bankAccountId)
+        this.put("type", type.code)
+        this.put("amount", amount)
+        this.put("timestamp", timestamp)
+        if (spendingCategoryId != null) this.put("spendingCategoryId", spendingCategoryId)
+    }
+}
