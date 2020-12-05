@@ -5,6 +5,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
+    id 'com.chrisney.enigma'
 }
 
 def keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -35,6 +36,8 @@ android {
                 arguments += ["room.incremental":"true"]
             }
         }
+
+        buildConfigField("boolean", "enableEncryption", "true")
     }
 
     signingConfigs {
@@ -52,10 +55,20 @@ android {
             applicationIdSuffix ".debug"
             versionNameSuffix = ".DEBUG"
             debuggable true
+            minifyEnabled false
+
+            buildConfigField "boolean", "enableEncryption", "false"
+        }
+
+        staging {
+            minifyEnabled true
+            debuggable true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         release {
-            minifyEnabled false
+            minifyEnabled true
             debuggable false
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -81,6 +94,13 @@ hilt {
     enableTransformForLocalTests = true
 }
 
+// Set Enigma options:
+enigma {
+    enabled = true
+    injectFakeKeys = true
+    classes = ["com.jmarkstar.cheqdemoproj.common.security.Passphrases.java"]
+}
+
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -91,10 +111,14 @@ dependencies {
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
-    //Room
+    //Database
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+    implementation "net.zetetic:android-database-sqlcipher:$android_sqlcipher"
+    implementation "androidx.sqlite:sqlite-ktx:$sqlite_ktx_version"
+
+    implementation "androidx.security:security-crypto:$security_crypto_version"
 
     //DI - Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
@@ -102,8 +126,8 @@ dependencies {
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodel_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_viewmodel_version"
 
+    //App Logging and crashes
     implementation "com.jakewharton.timber:timber:$timber_version"
-
     implementation platform("com.google.firebase:firebase-bom:$firebase_BoM")
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'

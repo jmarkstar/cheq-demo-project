@@ -9,8 +9,9 @@ import com.jmarkstar.cheqdemoproj.repositories.local.entities.BankAccount
 import com.jmarkstar.cheqdemoproj.repositories.local.entities.SpendingCategory
 import com.jmarkstar.cheqdemoproj.repositories.local.entities.Transaction
 import timber.log.Timber
-import java.util.*
+import java.util.Calendar
 
+// Pre-populating data locally but obviously this data must come from an API.
 class PrepopulateCallback : RoomDatabase.Callback() {
 
     override fun onCreate(db: SupportSQLiteDatabase) {
