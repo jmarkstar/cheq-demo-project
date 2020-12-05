@@ -48,6 +48,9 @@ android {
             keyPassword keystoreProperties['keyPassword']
             storeFile file(keystoreProperties['storeFile'])
             storePassword keystoreProperties['storePassword']
+            //v1 signature scheme makes our app vulnerable to Janus vulnerability on Android <7.0
+            v1SigningEnabled false
+            v2SigningEnabled true
         }
     }
 
