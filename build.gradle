@@ -10,7 +10,7 @@ buildscript {
         coroutines_version = '1.3.9'
         timber_version = '4.7.1'
         firebase_BoM = '26.1.1'
-        security_crypto_version = '1.1.0-alpha03'
+        security_crypto_version = '1.1.0-alpha03'//using this version to support api 21
     }
 
     repositories {

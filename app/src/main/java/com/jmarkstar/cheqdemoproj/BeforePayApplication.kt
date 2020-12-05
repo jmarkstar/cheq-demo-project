@@ -14,9 +14,11 @@ class BeforePayApplication: Application() {
         settingAppLogging()
     }
 
+    /** Shows logs only on the debug mode.
+     * */
     private fun settingAppLogging() {
-        if (BuildConfig.DEBUG)
-            Timber.plant(Timber.DebugTree())
+        //As OWASP suggestions, we need to be careful logging data on release.
+        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
         Timber.plant(CrashlyticsTree())
     }
 }

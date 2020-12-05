@@ -33,10 +33,12 @@ android {
             // If you are using other libraries that require annotation processor arguments, make sure you are adding arguments instead of overriding them.
             //For example, the following notably uses += to avoid overriding the Hilt arguments.
             annotationProcessorOptions {
-                arguments += ["room.incremental":"true"]
+                arguments += ["room.incremental" : "true"]
             }
         }
 
+        //As OWASP suggestions, we need to secure the data which are stored in
+        // the device. In this case, I'll encrypt the sqlite.db and the shared_preference.xml
         buildConfigField("boolean", "enableEncryption", "true")
     }
 
@@ -69,6 +71,7 @@ android {
 
         release {
             minifyEnabled true
+            //As OWASP suggestions, we need to disable the android:debuggable attribute and sign the apk.
             debuggable false
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -94,7 +97,8 @@ hilt {
     enableTransformForLocalTests = true
 }
 
-// Set Enigma options:
+//As OWASP suggestions, we need to prevent the reverse engineering of the apk. In this case, I'm encrypting a java class
+// where I have some secret keys with enigma(I would prefer to use DexGuard) before the obfuscation with Proguard.
 enigma {
     enabled = true
     injectFakeKeys = true

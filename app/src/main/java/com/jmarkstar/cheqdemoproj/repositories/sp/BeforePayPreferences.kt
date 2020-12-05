@@ -6,7 +6,7 @@ import androidx.security.crypto.MasterKey
 import com.jmarkstar.cheqdemoproj.BuildConfig
 import com.jmarkstar.cheqdemoproj.common.security.Passphrases
 
-/* I would use the stable version of EncryptedSharedPreferences to store some data on SharedPref */
+/* EncryptedSharedPreferences to store some data on release. */
 class BeforePayPreferences(context: Context) {
 
     private val sharedPreferencesName = "before_pay_prefs"
