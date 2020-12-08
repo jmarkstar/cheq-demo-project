@@ -2,12 +2,15 @@ package com.jmarkstar.cheqdemoproj.repositories.local.entities
 
 import android.content.ContentValues
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.jmarkstar.cheqdemoproj.models.TransactionType
 
 @Entity(tableName = "transactions",
-    indices = [Index("bankAccountId")])
+    indices = [Index("bankAccountId")],
+    foreignKeys = [ForeignKey(entity = BankAccount::class, parentColumns = arrayOf("id"),
+            childColumns = arrayOf("bankAccountId"), onDelete = ForeignKey.CASCADE)])
 
 data class Transaction(@PrimaryKey(autoGenerate = true) val id: Int? = null,
                        val bankAccountId: Int,

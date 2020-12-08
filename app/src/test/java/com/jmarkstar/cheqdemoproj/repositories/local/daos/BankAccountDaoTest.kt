@@ -9,7 +9,6 @@ import dagger.hilt.android.testing.UninstallModules
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import javax.inject.Inject

@@ -19,6 +19,10 @@ class BalanceRepositoryImpl @Inject constructor(private val bankDao: BankDao): B
     }
 
     override suspend fun getBalancesByBank(): List<Balance> {
+
+        val banksCount = bankDao.count()
+        Timber.v("banksCount = $banksCount")
+
         val list = ArrayList<Balance>()
         list.add(Balance("Nab","", "Saving", Date(), 200.00, 500.00))
         list.add(Balance("CommonwealthBank","","Netbank Saver",  Date(), 300.00, 5000.00))

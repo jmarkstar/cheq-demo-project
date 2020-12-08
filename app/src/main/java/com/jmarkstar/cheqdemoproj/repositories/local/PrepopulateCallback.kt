@@ -11,35 +11,50 @@ class PrepopulateCallback : RoomDatabase.Callback() {
     override fun onCreate(db: SupportSQLiteDatabase) {
         super.onCreate(db)
         Timber.d("Population started")
-        Timber.d("Populating spending_categories")
 
-        fakeSpendingCategories.forEach {
-            db.insert(SPENDING_CATEGORY_TABLE, SQLiteDatabase.CONFLICT_REPLACE, it.toContentValues())
-        }
+        try {
+            Timber.d("Populating spending_categories")
 
-        Timber.d("Populating banks")
-        fakeBanks.forEach {
-            db.insert(BANK_TABLE, SQLiteDatabase.CONFLICT_REPLACE, it.toContentValues())
-        }
+            fakeSpendingCategories.forEach {
+                db.insert(SPENDING_CATEGORY_TABLE, SQLiteDatabase.CONFLICT_REPLACE, it.toContentValues())
+            }
 
-        Timber.d("Populating bank_accounts")
-        fakeBankAccounts.forEach {
-            db.insert(BANK_ACCOUNT_TABLE, SQLiteDatabase.CONFLICT_REPLACE, it.toContentValues())
+            Timber.d("Populating banks")
+            fakeBanks.forEach {
+                db.insert(BANK_TABLE, SQLiteDatabase.CONFLICT_REPLACE, it.toContentValues())
+            }
+
+            Timber.d("Populating bank_accounts")
+            fakeBankAccounts.forEach {
+                db.insert(BANK_ACCOUNT_TABLE, SQLiteDatabase.CONFLICT_REPLACE, it.toContentValues())
+            }
+        } catch (ex: Exception) {
+            Timber.e(ex)
+
+        } finally {
+            Timber.d("Population Finished")
         }
-        Timber.d("Population Finished")
     }
 
     override fun onOpen(db: SupportSQLiteDatabase) {
         super.onOpen(db)
-        Timber.d("Re-population of transactions started")
 
-        Timber.d("transactions data was deleted")
-        db.delete(TRANSACTION_TABLE, null, null)
+        try {
+            Timber.d("Re-population of transactions started")
 
-        fakeTransactions.forEach {
-            db.insert(TRANSACTION_TABLE, SQLiteDatabase.CONFLICT_REPLACE, it.toContentValues())
+            Timber.d("transactions data was deleted")
+            db.delete(TRANSACTION_TABLE, null, null)
+
+            Timber.d("Populating transactions")
+            fakeTransactions.forEach {
+                db.insert(TRANSACTION_TABLE, SQLiteDatabase.CONFLICT_REPLACE, it.toContentValues())
+            }
+        } catch (ex: Exception) {
+            Timber.e(ex)
+
+        } finally {
+            Timber.d("Re-population of transactions finished")
         }
-        Timber.d("Re-population of transactions finished")
     }
 
     companion object {

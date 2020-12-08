@@ -21,6 +21,7 @@ val fakeBanks = arrayListOf(Bank(1, "Westpac", "ic_westpac"),
 
 val fakeBankAccounts = arrayListOf(BankAccount(1, 1, "063-565 4564 7054", "Choice"),
                         BankAccount(2, 1, "063-456 1223 3423", "Saving"),
+                        BankAccount(3, 2, "063-234 4534 5667", "Smart Access"),
                         BankAccount(4, 2, "063-234 7889 4534", "NetBank Saver"))
 
 val fakeTransactions : ArrayList<Transaction>
@@ -65,6 +66,7 @@ val fakeTransactions : ArrayList<Transaction>
         transactions.add(Transaction(bankAccountId = 1, type = TransactionType.SPENDING, amount = 420.90, timestamp = timeStampNow, spendingCategoryId = 1))
         transactions.add(Transaction(bankAccountId = 1, type = TransactionType.SPENDING, amount = 280.50, timestamp = timeStamp1DayAgo, spendingCategoryId = 2))
         transactions.add(Transaction(bankAccountId = 1, type = TransactionType.SPENDING, amount = 520.00, timestamp = timeStamp4HoursAgo, spendingCategoryId = 3))
+        transactions.add(Transaction(bankAccountId = 2, type = TransactionType.INCOMING, amount = 500.00, timestamp = timeStamp1DayAgo))
         transactions.add(Transaction(bankAccountId = 2, type = TransactionType.SPENDING, amount = 50.90, timestamp = timeStamp4HoursAgo, spendingCategoryId = 1))
         transactions.add(Transaction(bankAccountId = 2, type = TransactionType.SPENDING, amount = 70.50, timestamp = timeStamp4HoursAgo, spendingCategoryId = 2))
         transactions.add(Transaction(bankAccountId = 2, type = TransactionType.SPENDING, amount = 90.00, timestamp = timeStamp1DayAgo, spendingCategoryId = 3))
