@@ -8,6 +8,9 @@ import com.jmarkstar.cheqdemoproj.repositories.local.entities.Transaction
 * */
 @Dao interface TransactionDao {
 
+    @Query("SELECT COUNT(id) FROM transactions")
+    suspend fun count(): Int
+
     @Query("SELECT COUNT(id) FROM transactions WHERE bankAccountId = :idBankAccount")
     suspend fun countTransactionsBy(idBankAccount: Int): Int
 

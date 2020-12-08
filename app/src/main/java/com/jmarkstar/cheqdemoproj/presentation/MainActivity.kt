@@ -6,6 +6,7 @@ import android.view.WindowManager
 import com.jmarkstar.cheqdemoproj.R
 import com.jmarkstar.cheqdemoproj.repositories.BalanceRepository
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -26,12 +27,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         GlobalScope.launch {
-            balanceRepository.getBalancesByBank().forEach {
-                Timber.v(it.toString())
-            }
 
-            balanceRepository.getAllBankAccountsBalance().forEach {
-                Timber.v(it.toString())
+            val balanceCount = balanceRepository.getBalancesByBank().size
+
+            runOnUiThread {
+                tvBalanceCount.text = "$balanceCount"
             }
         }
     }

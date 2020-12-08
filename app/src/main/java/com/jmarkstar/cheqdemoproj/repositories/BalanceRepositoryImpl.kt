@@ -8,7 +8,7 @@ import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 // This Repository only will use the local database as a source but I could also use an API as another source.
-class BalanceRepositoryImpl @Inject constructor(val bankDao: BankDao): BalanceRepository {
+class BalanceRepositoryImpl @Inject constructor(private val bankDao: BankDao): BalanceRepository {
 
     override suspend fun getAllBankAccountsBalance(): List<Balance> {
 
