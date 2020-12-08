@@ -1,5 +1,6 @@
 package com.jmarkstar.cheqdemoproj.models
 
-data class Expense(val amount: Double,
-                    val categoryName: String,
-                    val categoryIcon: String)
+data class Expense(val spendingCategoryName: String,
+                   val spendingCategoryIcon: String,
+                   val total: Double,
+                   val registrationMonth: String)

@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import com.jmarkstar.cheqdemoproj.repositories.local.entities.SpendingCategory
 
-/* This dao has random methods which won't be used on the app.
+/* SpendingCategory Dao
 * */
 @Dao interface SpendingCategoryDao {
 
