@@ -6,5 +6,5 @@ interface BalanceRepository {
 
     suspend fun getAllBankAccountsBalance(): List<Balance>
 
-    suspend fun getBalancesByBank(): List<Balance>
+    suspend fun getBalancesBy(bankId: Int): List<Balance>
 }

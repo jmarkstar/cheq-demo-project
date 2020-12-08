@@ -10,7 +10,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import javax.inject.Inject
@@ -25,7 +24,6 @@ class BankDaoTest: BaseTest() {
 
     @Inject lateinit var bankDao: BankDao
 
-    @Before
     override fun setUp() {
         super.setUp()
         hiltRule.inject()
@@ -36,4 +34,6 @@ class BankDaoTest: BaseTest() {
         assertNotNull(bankDao)
         assertEquals(fakeBanks.size, bankDao.count())
     }
+
+    //Add more unit test
 }

@@ -17,6 +17,7 @@ data class Transaction(@PrimaryKey(autoGenerate = true) val id: Int? = null,
                        val type: TransactionType,
                        val amount: Double,
                        val timestamp: Long,
+                       val syncTimestamp: Long,
                        val spendingCategoryId: Int? = null) {
 
     fun toContentValues() = ContentValues().apply {
@@ -25,6 +26,7 @@ data class Transaction(@PrimaryKey(autoGenerate = true) val id: Int? = null,
         this.put("type", type.code)
         this.put("amount", amount)
         this.put("timestamp", timestamp)
+        this.put("syncTimestamp", syncTimestamp)
         if (spendingCategoryId != null) this.put("spendingCategoryId", spendingCategoryId)
     }
 }

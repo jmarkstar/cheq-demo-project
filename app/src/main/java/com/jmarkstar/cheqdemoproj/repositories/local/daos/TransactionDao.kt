@@ -15,7 +15,7 @@ import com.jmarkstar.cheqdemoproj.models.Expense
             SELECT sc.name as spendingCategoryName, 
             sc.iconName as spendingCategoryIcon, 
             SUM(t.amount) as total,
-            strftime("%Y-%m", t.timestamp/1000, "unixepoch") as registrationMonth
+            strftime('%Y-%m', t.timestamp/1000, 'unixepoch', 'localtime') as registrationMonth
             FROM transactions t
             INNER JOIN spending_categories sc ON t.spendingCategoryId = sc.id 
             INNER JOIN bank_accounts ba ON t.bankAccountId = ba.id 

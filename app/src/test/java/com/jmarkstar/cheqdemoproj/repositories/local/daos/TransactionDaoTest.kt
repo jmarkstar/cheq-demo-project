@@ -34,4 +34,6 @@ class TransactionDaoTest: BaseTest() {
         Assert.assertNotNull(transactionDao)
         Assert.assertEquals(fakeTransactions.size, transactionDao.count())
     }
+
+    //Add more unit test
 }

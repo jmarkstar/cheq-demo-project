@@ -39,4 +39,6 @@ class SpendingCategoryDaoTest: BaseTest() {
     fun `test spending categories values`() = runBlocking {
         Assert.assertTrue(fakeSpendingCategories.containsAll(spendingCategoryDao.getAllSpendingCategories()))
     }
+
+    //Add more unit test
 }

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch {
 
-            val balanceCount = balanceRepository.getBalancesByBank().size
+            val balanceCount = balanceRepository.getAllBankAccountsBalance().size
 
             runOnUiThread {
                 tvBalanceCount.text = "$balanceCount"

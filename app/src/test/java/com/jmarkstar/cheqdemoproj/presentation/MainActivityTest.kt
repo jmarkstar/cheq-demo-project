@@ -5,6 +5,7 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.jmarkstar.cheqdemoproj.R
+import com.jmarkstar.cheqdemoproj.allBankAccountsBalanceCount
 import com.jmarkstar.cheqdemoproj.common.BaseTest
 import com.jmarkstar.cheqdemoproj.di.RepositoryModule
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -37,7 +38,7 @@ class MainActivityTest: BaseTest() {
             Assert.assertNotNull(it.balanceRepository)
 
             runBlocking {
-                assert(it.balanceRepository.getBalancesByBank().size == 3)
+                assert(it.balanceRepository.getAllBankAccountsBalance().size == allBankAccountsBalanceCount)
             }
         }
     }
@@ -46,7 +47,7 @@ class MainActivityTest: BaseTest() {
     fun `test textview`() {
 
         Espresso.onView(ViewMatchers.withId(R.id.tvBalanceCount))
-            .check(ViewAssertions.matches(ViewMatchers.withText("3")))
+            .check(ViewAssertions.matches(ViewMatchers.withText("$allBankAccountsBalanceCount")))
     }
 
     @After
