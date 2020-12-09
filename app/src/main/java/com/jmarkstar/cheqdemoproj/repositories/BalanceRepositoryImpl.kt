@@ -4,6 +4,8 @@ import com.jmarkstar.cheqdemoproj.repositories.local.daos.BankAccountDao
 import com.jmarkstar.cheqdemoproj.repositories.local.daos.BankDao
 import javax.inject.Inject
 
+/** This repositories in returning the data directly, I'm not managing the errors.
+ * */
 class BalanceRepositoryImpl @Inject constructor(private val bankDao: BankDao,
                             private val bankAccountDao: BankAccountDao): BalanceRepository {
 

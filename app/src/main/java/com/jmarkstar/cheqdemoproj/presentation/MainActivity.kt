@@ -3,35 +3,32 @@ package com.jmarkstar.cheqdemoproj.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
+import androidx.activity.viewModels
+import androidx.databinding.DataBindingUtil
 import com.jmarkstar.cheqdemoproj.R
-import com.jmarkstar.cheqdemoproj.repositories.BalanceRepository
+import com.jmarkstar.cheqdemoproj.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject lateinit var balanceRepository: BalanceRepository
+    private val homeViewModel by viewModels<HomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //As OWASP suggestions and in case of this app, probably we don't want to allow the user to take screenshots of the app
+        //As OWASP suggestion and in case of this app, probably we don't want to allow the user to take screenshots of the app
         // or show the preview in the recent apps.
         window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
 
-        setContentView(R.layout.activity_main)
+        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
-        GlobalScope.launch {
+        homeViewModel.balances.observe(this, {
+            binding.balanceCount = "${it.size}"
+        })
 
-            val balanceCount = balanceRepository.getAllBankAccountsBalance().size
+        homeViewModel.expenses.observe(this, {
 
-            runOnUiThread {
-                tvBalanceCount.text = "$balanceCount"
-            }
-        }
+        })
     }
 }

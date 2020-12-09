@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: "org.jetbrains.kotlin.plugin.parcelize"
 apply plugin: "kotlin-kapt"
 apply plugin: "dagger.hilt.android.plugin"
 apply plugin: "com.google.gms.google-services"
@@ -40,6 +40,10 @@ android {
         //As OWASP suggestions, we need to secure the data which are stored in
         // the device. In this case, I'll encrypt the sqlite.db and the shared_preference.xml
         buildConfigField("boolean", "enableEncryption", "true")
+    }
+
+    buildFeatures {
+        dataBinding true
     }
 
     signingConfigs {
@@ -125,8 +129,14 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.fragment:fragment-ktx:1.2.5'
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    //viewmodel + lifedata
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$livecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$livecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livecycle_version"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodel_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_viewmodel_version"
 
     //Database
     implementation "androidx.room:room-runtime:$room_version"
@@ -140,8 +150,9 @@ dependencies {
     //DI - Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodel_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_viewmodel_version"
+
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     //App Logging and crashes
     implementation "com.jakewharton.timber:timber:$timber_version"
