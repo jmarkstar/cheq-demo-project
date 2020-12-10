@@ -10,7 +10,7 @@ import com.jmarkstar.cheqdemoproj.repositories.TransactionRepository
 
 class HomeViewModel @ViewModelInject constructor(private val balanceRepository: BalanceRepository,
                                     private val transactionRepository: TransactionRepository,
-                                    @Assisted private val savedStateHandle: SavedStateHandle) : ViewModel() {
+                                    @Assisted private val savedStateHandle: SavedStateHandle? = null) : ViewModel() {
 
     val balances = liveData {
         emit(balanceRepository.getAllBankAccountsBalance())

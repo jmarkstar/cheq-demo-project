@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">BeforePay</string>
+
+    <string name="card_just_now">Just now</string>
+    <string name="card_all_accounts_label">All accounts</string>
+    <string name="card_balance_label">Balance after bills</string>
+    <string name="card_bills_label">Bills</string>
+    <string name="card_cash_label">Cash</string>
+    <string name="card_spent_label">Spent</string>
+    <string name="card_income_label">Income</string>
 </resources>

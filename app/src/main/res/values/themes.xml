@@ -13,4 +13,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="TextAppearance.Bold" parent="android:TextAppearance">
+        <item name="fontPath">fonts/SF-UI-Text-Bold.otf</item>
+    </style>
+
 </resources>

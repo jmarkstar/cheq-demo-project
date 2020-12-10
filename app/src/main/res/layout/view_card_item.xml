@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cardItem"
+            type="com.jmarkstar.cheqdemoproj.presentation.home.CardItem" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="@dimen/card_layout_width"
+        android:layout_height="@dimen/card_layout_height"
+        android:padding="@dimen/app_spacing"
+        android:elevation="@dimen/app_spacing_small"
+        android:background="@{cardItem.isAllAccount ? @drawable/bg_all_account_card : @drawable/bg_bank_card}"
+        tools:background="@drawable/bg_all_account_card">
+
+        <RelativeLayout
+            android:id="@+id/bank_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/bankIcon"
+                android:visibility="@{!cardItem.isAllAccount}"
+                android:layout_marginEnd="@dimen/app_spacing_small"
+                android:layout_width="@dimen/card_bank_icon_size"
+                android:layout_height="@dimen/card_bank_icon_size" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_toEndOf="@+id/bankIcon"
+                android:layout_centerVertical="true"
+                android:text="@{cardItem.bankName}"
+                android:textColor="@{cardItem.isAllAccount ? @color/card_all_account_color : @color/black}"
+                android:textAppearance="@style/TextAppearance.Bold"
+                tools:text="@string/card_all_accounts_label" />
+
+            <LinearLayout
+                android:visibility="@{!cardItem.isAllAccount}"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/card_sync_time_icon_size"
+                    android:layout_height="@dimen/card_sync_time_icon_size"
+                    android:layout_marginEnd="@dimen/app_spacing_tiny"
+                    android:src="@drawable/ic_refresh"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/card_just_now"
+                    android:textSize="@dimen/card_sync_time_text_size"
+                    android:textColor="@color/card_sync_date_color" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/balance_section"
+            android:layout_below="@+id/bank_section"
+            android:layout_marginTop="@dimen/app_spacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@{cardItem.balance}"
+                android:layout_marginEnd="@dimen/app_spacing_small"
+                android:textSize="24sp"
+                android:textColor="@{cardItem.isAllAccount ? @color/white : @color/black}"
+                android:textAppearance="@style/TextAppearance.Bold"
+                tools:text="$1,005" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@{cardItem.isAllAccount ? @color/card_all_account_color : @color/black}"
+                android:text="@string/card_balance_label" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/app_spacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View android:background="@drawable/bg_expense_circle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/app_spacing_small"
+                    android:layout_width="@dimen/card_dot_size"
+                    android:layout_height="@dimen/card_dot_size"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@{cardItem.spent}"
+                    android:layout_marginEnd="@dimen/app_spacing_tiny"
+                    android:textColor="@{cardItem.isAllAccount ? @color/white : @color/black}"
+                    android:textAppearance="@style/TextAppearance.Bold"
+                    tools:text="$450" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@{cardItem.isAllAccount ? @color/card_all_account_color : @color/black}"
+                    android:text="@{cardItem.isAllAccount ? @string/card_bills_label : @string/card_spent_label}"
+                    tools:text="@string/card_bills_label" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_alignParentEnd="true"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View android:background="@drawable/bg_income_circle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/app_spacing_small"
+                    android:layout_width="@dimen/card_dot_size"
+                    android:layout_height="@dimen/card_dot_size"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@{cardItem.income}"
+                    android:layout_marginEnd="@dimen/app_spacing_tiny"
+                    android:textColor="@{cardItem.isAllAccount ? @color/white : @color/black}"
+                    android:textAppearance="@style/TextAppearance.Bold"
+                    tools:text="$1445" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@{cardItem.isAllAccount ? @color/card_all_account_color : @color/black}"
+                    android:text="@{cardItem.isAllAccount ? @string/card_cash_label : @string/card_income_label}"
+                    tools:text="@string/card_cash_label" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="card_all_account_color">#BFFFFFFF</color>
+    <color name="card_expense_color">#CC334A</color>
+    <color name="card_income_color">#08C4AE</color>
+    <color name="card_sync_date_color">#999999</color>
+
 </resources>

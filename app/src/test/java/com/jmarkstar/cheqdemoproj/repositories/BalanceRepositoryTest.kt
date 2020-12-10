@@ -19,7 +19,7 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 class BalanceRepositoryTest: BaseTest() {
 
-    val bankId = 1
+    private val bankId = 1
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
