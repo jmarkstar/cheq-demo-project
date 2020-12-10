@@ -5,30 +5,28 @@
 
     <data>
 
-        <import type="com.jmarkstar.cheqdemoproj.presentation.common.recyclerview.CardItemDecoration" />
-
-        <variable
-            name="viewModel"
-            type="com.jmarkstar.cheqdemoproj.presentation.home.HomeViewModel" />
-
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginTop="@dimen/app_spacing"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCard"
-            android:overScrollMode="never"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:itemCount="3"
-            tools:listitem="@layout/view_card_item"
-            app:items="@{viewModel.balances}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    </RelativeLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

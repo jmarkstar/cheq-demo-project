@@ -1,4 +1,4 @@
-package com.jmarkstar.cheqdemoproj.presentation.common.recyclerview
+package com.jmarkstar.cheqdemoproj.common.presentation.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

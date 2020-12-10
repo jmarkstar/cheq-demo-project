@@ -1,4 +1,4 @@
-package com.jmarkstar.cheqdemoproj.presentation.common.recyclerview
+package com.jmarkstar.cheqdemoproj.presentation.home
 
 import android.graphics.Rect
 import android.view.View

@@ -1,4 +1,4 @@
-package com.jmarkstar.cheqdemoproj.presentation.common
+package com.jmarkstar.cheqdemoproj.common.presentation
 
 import android.content.Context
 import android.graphics.drawable.Drawable

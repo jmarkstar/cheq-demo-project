@@ -2,7 +2,7 @@ package com.jmarkstar.cheqdemoproj.presentation.home
 
 import com.jmarkstar.cheqdemoproj.BR
 import com.jmarkstar.cheqdemoproj.R
-import com.jmarkstar.cheqdemoproj.presentation.common.recyclerview.RecyclerItem
+import com.jmarkstar.cheqdemoproj.common.presentation.recyclerview.RecyclerItem
 
 data class CardItem(val bankName: String,
                     val bankIcon: String,

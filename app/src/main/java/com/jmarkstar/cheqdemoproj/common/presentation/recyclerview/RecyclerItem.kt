@@ -1,4 +1,4 @@
-package com.jmarkstar.cheqdemoproj.presentation.common.recyclerview
+package com.jmarkstar.cheqdemoproj.common.presentation.recyclerview
 
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
