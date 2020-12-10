@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <import type="com.jmarkstar.cheqdemoproj.presentation.common.recyclerview.CardItemDecoration" />
+
         <variable
-            name="cardItem"
-            type="com.jmarkstar.cheqdemoproj.presentation.home.CardItem" />
+            name="viewModel"
+            type="com.jmarkstar.cheqdemoproj.presentation.home.HomeViewModel" />
 
     </data>
 
     <RelativeLayout
-        android:layout_width="@dimen/card_layout_width"
-        android:layout_height="@dimen/card_layout_height"
-        android:padding="@dimen/app_spacing"
-        tools:background="@drawable/bg_all_account_card">
+        android:layout_marginTop="@dimen/app_spacing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCard"
+            android:overScrollMode="never"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="3"
+            tools:listitem="@layout/view_card_item"
+            app:items="@{viewModel.balances}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </RelativeLayout>
 

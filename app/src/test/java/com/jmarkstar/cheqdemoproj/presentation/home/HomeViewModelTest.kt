@@ -2,7 +2,6 @@ package com.jmarkstar.cheqdemoproj.presentation.home
 
 import com.jmarkstar.cheqdemoproj.common.BaseTest
 import com.jmarkstar.cheqdemoproj.models.Balance
-import com.jmarkstar.cheqdemoproj.presentation.HomeViewModel
 import com.jmarkstar.cheqdemoproj.repositories.BalanceRepository
 import com.jmarkstar.cheqdemoproj.repositories.TransactionRepository
 import io.mockk.coEvery

@@ -15,6 +15,7 @@
         android:layout_width="@dimen/card_layout_width"
         android:layout_height="@dimen/card_layout_height"
         android:padding="@dimen/app_spacing"
+        android:layout_marginBottom="@dimen/app_spacing"
         android:elevation="@dimen/app_spacing_small"
         android:background="@{cardItem.isAllAccount ? @drawable/bg_all_account_card : @drawable/bg_bank_card}"
         tools:background="@drawable/bg_all_account_card">
@@ -33,6 +34,7 @@
             android:layout_width="@dimen/card_bank_icon_size"
             android:layout_height="@dimen/card_bank_icon_size"
             tools:src="@drawable/ic_commbank"
+            app:srcName="@{cardItem.bankIcon}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -65,7 +67,7 @@
             android:id="@+id/syncTime"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/card_just_now"
+            android:text="@{cardItem.syncDate}"
             android:textSize="@dimen/card_sync_time_text_size"
             android:textColor="@color/card_sync_date_color"
             app:layout_constraintTop_toTopOf="parent"

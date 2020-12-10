@@ -1,4 +1,4 @@
-package com.jmarkstar.cheqdemoproj.common
+package com.jmarkstar.cheqdemoproj.presentation.common
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
