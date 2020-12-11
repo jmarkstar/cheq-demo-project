@@ -26,12 +26,41 @@ class HomeViewModelTest: BaseTest() {
     }
 
     @Test
-    fun `test balance size list`() {
+    fun `test card item size with two banks success`() {
 
         //given
-        val balancesSize = 10
-        val balances = mockk<List<Balance>>()
-        every { balances.size } returns balancesSize
+        val commBankName = "Commbank"
+        val commBankIconName = "ic_commbank"
+        val westpacName = "Westpac"
+        val westpaIconName = "ic_westpac"
+
+        val commBankBalance1 = mockk<Balance>()
+        val commBankBalance2 = mockk<Balance>()
+        val westpacBalance1 = mockk<Balance>()
+        val westpacBalance2 = mockk<Balance>()
+
+        val balances = arrayListOf(commBankBalance1, commBankBalance2, westpacBalance1, westpacBalance2)
+
+        every { commBankBalance1.bankName } returns commBankName
+        every { commBankBalance1.bankIcon } returns commBankIconName
+        every { commBankBalance1.spent } returns 0.0
+        every { commBankBalance1.income } returns 0.0
+
+        every { commBankBalance2.bankName } returns commBankName
+        every { commBankBalance2.bankIcon } returns commBankIconName
+        every { commBankBalance2.spent } returns 0.0
+        every { commBankBalance2.income } returns 0.0
+
+        every { westpacBalance1.bankName } returns westpacName
+        every { westpacBalance1.bankIcon } returns westpaIconName
+        every { westpacBalance1.spent } returns 0.0
+        every { westpacBalance1.income } returns 0.0
+
+        every { westpacBalance2.bankName } returns westpacName
+        every { westpacBalance2.bankIcon } returns westpaIconName
+        every { westpacBalance2.spent } returns 0.0
+        every { westpacBalance2.income } returns 0.0
+
         coEvery { balanceRepository.getAllBankAccountsBalance() } returns balances
 
         //when
@@ -39,6 +68,8 @@ class HomeViewModelTest: BaseTest() {
         val resultSize = homeViewModel.balances.value?.size ?: 0
 
         //then
-        Assert.assertEquals(balancesSize, resultSize)
+
+        //allaccounts, westpac and commbank = 3
+        Assert.assertEquals(3, resultSize)
     }
 }
