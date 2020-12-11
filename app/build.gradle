@@ -112,7 +112,7 @@ kapt {
 //As OWASP suggestion, we need to prevent the reverse engineering of the apk. In this case, I'm encrypting a java class
 // where I have some secret keys with enigma(I would prefer to use DexGuard) before the obfuscation with Proguard.
 enigma {
-    enabled = false
+    enabled = true
     injectFakeKeys = true
     classes = ["com.jmarkstar.cheqdemoproj.common.security.Passphrases.java"]
 }
