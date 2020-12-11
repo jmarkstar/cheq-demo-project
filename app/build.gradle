@@ -103,6 +103,11 @@ android {
             includeAndroidResources = true
         }
     }
+
+    //TODO: configure lint.xml
+    lintOptions {
+        abortOnError false
+    }
 }
 
 kapt {
