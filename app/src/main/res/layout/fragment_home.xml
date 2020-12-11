@@ -9,6 +9,10 @@
             name="viewModel"
             type="com.jmarkstar.cheqdemoproj.presentation.home.HomeViewModel" />
 
+        <variable
+            name="onItemClick"
+            type="com.jmarkstar.cheqdemoproj.common.presentation.recyclerview.OnRecyclerItemClick" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,8 +27,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:itemCount="3"
-            tools:listitem="@layout/view_card_item"
+            tools:listitem="@layout/fragment_home_cards_item"
             app:items="@{viewModel.balances}"
+            app:onItemClick="@{onItemClick}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

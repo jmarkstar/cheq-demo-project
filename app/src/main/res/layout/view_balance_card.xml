@@ -12,20 +12,18 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/card_layout_width"
+        android:id="@+id/balanceCardRoot"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/card_layout_height"
         android:padding="@dimen/app_spacing"
-        android:layout_marginBottom="@dimen/app_spacing"
-        android:elevation="@dimen/app_spacing_small"
-        android:background="@{cardItem.isAllAccount ? @drawable/bg_all_account_card : @drawable/bg_bank_card}"
         tools:background="@drawable/bg_all_account_card">
 
         <!-- Bank Info Section -->
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:visibility="@{!cardItem.isAllAccount}"
             app:constraint_referenced_ids="bankIcon,syncIcon,syncTime" />
 
@@ -68,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@{cardItem.syncDate}"
+            tools:text="@string/card_just_now"
             android:textSize="@dimen/card_sync_time_text_size"
             android:textColor="@color/card_sync_date_color"
             app:layout_constraintTop_toTopOf="parent"
@@ -97,6 +96,7 @@
             android:layout_marginTop="@dimen/app_spacing" />
 
         <TextView
+            android:id="@+id/balanceLabel"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:textColor="@{cardItem.isAllAccount ? @color/card_all_account_color : @color/black}"
@@ -113,14 +113,15 @@
 
         <!-- Total Section -->
 
-        <View android:id="@+id/expenseDot"
+        <View
+            android:id="@+id/expenseDot"
             android:background="@drawable/bg_expense_circle"
             android:layout_width="@dimen/card_dot_size"
             android:layout_height="@dimen/card_dot_size"
             android:layout_marginEnd="@dimen/app_spacing_small"
             app:layout_constraintTop_toTopOf="@+id/totalExpense"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/glTotalSection"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
             android:id="@+id/totalExpense"
@@ -133,9 +134,10 @@
             tools:text="$450"
             android:layout_marginStart="@dimen/app_spacing_small"
             app:layout_constraintStart_toEndOf="@+id/expenseDot"
-            app:layout_constraintBottom_toTopOf="@+id/glTotalSection"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <TextView android:id="@+id/expenseLabel"
+        <TextView
+            android:id="@+id/expenseLabel"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textColor="@{cardItem.isAllAccount ? @color/card_all_account_color : @color/black}"
@@ -143,17 +145,20 @@
             tools:text="@string/card_bills_label"
             android:layout_marginStart="@dimen/app_spacing_tiny"
             app:layout_constraintStart_toEndOf="@+id/totalExpense"
-            app:layout_constraintBottom_toTopOf="@+id/glTotalSection"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <View android:background="@drawable/bg_income_circle"
+        <View
+            android:id="@+id/incomeDot"
+            android:background="@drawable/bg_income_circle"
             android:layout_marginEnd="@dimen/app_spacing_small"
             android:layout_width="@dimen/card_dot_size"
             android:layout_height="@dimen/card_dot_size"
             app:layout_constraintTop_toTopOf="@+id/incomeValue"
             app:layout_constraintEnd_toStartOf="@+id/incomeValue"
-            app:layout_constraintBottom_toTopOf="@+id/glTotalSection"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <TextView android:id="@+id/incomeValue"
+        <TextView
+            android:id="@+id/incomeValue"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@{cardItem.income}"
@@ -162,7 +167,7 @@
             android:textAppearance="@style/TextAppearance.Bold"
             tools:text="$1445"
             app:layout_constraintEnd_toStartOf="@+id/incomeLabel"
-            app:layout_constraintBottom_toTopOf="@+id/glTotalSection"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
             android:id="@+id/incomeLabel"
@@ -172,14 +177,7 @@
             android:text="@{cardItem.isAllAccount ? @string/card_cash_label : @string/card_income_label}"
             tools:text="@string/card_cash_label"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/glTotalSection" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glTotalSection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintGuide_end="@dimen/app_spacing"
-            android:orientation="horizontal"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

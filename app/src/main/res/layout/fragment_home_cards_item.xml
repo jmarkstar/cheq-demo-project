@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="cardItem"
+            type="com.jmarkstar.cheqdemoproj.presentation.home.CardItem" />
+
+    </data>
+
+    <com.jmarkstar.cheqdemoproj.common.presentation.custom_views.BalanceCardView
+        android:id="@+id/balanceCardItem"
+        android:transitionName="balanceCardItem"
+        android:layout_width="@dimen/card_layout_width"
+        android:layout_height="@dimen/card_layout_height"
+        android:layout_marginBottom="@dimen/app_spacing"
+        android:elevation="@dimen/app_spacing_small"
+        cardItem="@{cardItem}" />
+
+</layout>

@@ -1,12 +1,15 @@
 package com.jmarkstar.cheqdemoproj.common.presentation.recyclerview
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerViewAdapter: RecyclerView.Adapter<BindingViewHolder>() {
+class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.BindingViewHolder>() {
+
+    var onItemClick: OnRecyclerItemClick? = null
 
     private val items = mutableListOf<RecyclerItem>()
 
@@ -29,5 +32,16 @@ class RecyclerViewAdapter: RecyclerView.Adapter<BindingViewHolder>() {
         items.addAll(newItems)
         notifyDataSetChanged()
     }
+
+    inner class BindingViewHolder(val binding: ViewDataBinding): RecyclerView.ViewHolder(binding.root) {
+        init {
+            itemView.setOnClickListener {
+                onItemClick?.onItemClick(items[adapterPosition], binding.root)
+            }
+        }
+    }
 }
-class BindingViewHolder(val binding: ViewDataBinding): RecyclerView.ViewHolder(binding.root)
+
+fun interface OnRecyclerItemClick {
+    fun onItemClick(recyclerItem: RecyclerItem, view: View)
+}

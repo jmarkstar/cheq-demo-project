@@ -7,6 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
+        android:label="@string/home_label"
         android:name="com.jmarkstar.cheqdemoproj.presentation.home.HomeFragment"
         tools:layout="@layout/fragment_home">
 
@@ -18,7 +19,18 @@
 
     <fragment
         android:id="@+id/cardDetailsFragment"
+        android:label="{title}"
         android:name="com.jmarkstar.cheqdemoproj.presentation.card_details.CardDetailsFragment"
-        tools:layout="@layout/fragment_card_details" />
+        tools:layout="@layout/fragment_card_details" >
+
+        <argument
+            android:name="selectCardItem"
+            app:argType="com.jmarkstar.cheqdemoproj.presentation.home.CardItem" />
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+    </fragment>
 
 </navigation>

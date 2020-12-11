@@ -4,17 +4,26 @@ import android.content.Context
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import com.jmarkstar.cheqdemoproj.R
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 
 abstract class BaseActivity<Binding: ViewDataBinding>: AppCompatActivity() {
 
     lateinit var binding: Binding
 
+    var navController: NavController? = null
+
     abstract fun layoutId(): Int
 
     open fun allowScreenshot() = false
+
+    open fun navHostFragment() = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +35,21 @@ abstract class BaseActivity<Binding: ViewDataBinding>: AppCompatActivity() {
         }
 
         binding = DataBindingUtil.setContentView(this, layoutId())
+
+        if (navHostFragment() != 0){
+            val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            navController = navHostFragment.navController
+        }
     }
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
+    }
+
+    protected fun setupToolbar(toolbar: Toolbar) {
+        setSupportActionBar(toolbar)
+        navController?.apply {
+            NavigationUI.setupWithNavController(toolbar, this)
+        }
     }
 }

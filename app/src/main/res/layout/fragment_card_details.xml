@@ -6,16 +6,42 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.jmarkstar.cheqdemoproj.presentation.home.HomeViewModel" />
+            name="cardItem"
+            type="com.jmarkstar.cheqdemoproj.presentation.home.CardItem" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="@dimen/app_spacing"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.jmarkstar.cheqdemoproj.common.presentation.custom_views.BalanceCardView
+            android:id="@+id/balanceCardView"
+            android:transitionName="balanceCardItem"
+            android:layout_width="@dimen/card_layout_width"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/app_spacing"
+            android:elevation="@dimen/app_spacing_small"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            cardItem="@{cardItem}">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCard"
+                android:overScrollMode="never"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="3"
+                tools:listitem="@layout/fragment_home_cards_item"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </com.jmarkstar.cheqdemoproj.common.presentation.custom_views.BalanceCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

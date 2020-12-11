@@ -1,5 +1,6 @@
 package com.jmarkstar.cheqdemoproj.common.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +8,23 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import java.io.InvalidClassException
 
 abstract class BaseFragment<Binding: ViewDataBinding>: Fragment() {
 
     lateinit var binding: Binding
 
     abstract fun layoutId(): Int
+
+    var baseActivity: BaseActivity<*>? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context !is BaseActivity<*>) {
+            throw InvalidClassException("Fragment must be attached on BaseActivity")
+        }
+        baseActivity = context
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?) : View {

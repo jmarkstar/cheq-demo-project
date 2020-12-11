@@ -8,4 +8,8 @@
     <string name="card_cash_label">Cash</string>
     <string name="card_spent_label">Spent</string>
     <string name="card_income_label">Income</string>
+
+    <string name="home_label">Home</string>
+
+    <string name="card_details_label">Card details</string>
 </resources>

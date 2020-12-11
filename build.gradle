@@ -12,7 +12,7 @@ buildscript {
         timber_version = '4.7.1'
         firebase_BoM = '26.1.1'
         security_crypto_version = '1.1.0-alpha03'//using this version to support api 21
-
+        nav_component_version="2.3.2"
         //test
         jacoco_version = '0.8.5'
         junit_version ="4.13.1"
@@ -41,6 +41,8 @@ buildscript {
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.4.1'
         classpath 'gradle.plugin.chrisney:enigma:1.0.0.8'
         classpath "org.jacoco:org.jacoco.core:$jacoco_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_component_version"
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
