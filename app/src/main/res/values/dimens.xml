@@ -13,6 +13,7 @@
     <dimen name="card_dot_size">8dp</dimen>
     <dimen name="card_layout_height">204dp</dimen>
     <dimen name="card_layout_width">316dp</dimen>
+    <dimen name="card_layout_width_detail">360dp</dimen>
     <dimen name="card_sync_time_text_size">12sp</dimen>
     <dimen name="card_sync_time_icon_size">16sp</dimen>
 

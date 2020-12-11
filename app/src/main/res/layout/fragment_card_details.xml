@@ -19,7 +19,7 @@
         <com.jmarkstar.cheqdemoproj.common.presentation.custom_views.BalanceCardView
             android:id="@+id/balanceCardView"
             android:transitionName="balanceCardItem"
-            android:layout_width="@dimen/card_layout_width"
+            android:layout_width="@dimen/card_layout_width_detail"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/app_spacing"
             android:elevation="@dimen/app_spacing_small"
