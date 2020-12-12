@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import java.io.InvalidClassException
 
 abstract class BaseFragment<Binding : ViewDataBinding> : Fragment() {
@@ -34,4 +36,7 @@ abstract class BaseFragment<Binding : ViewDataBinding> : Fragment() {
         binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
         return binding.root
     }
+
+    inline fun <reified T : ViewModel> obtainSharedViewModel(): T =
+        ViewModelProvider(requireActivity(), defaultViewModelProviderFactory).get(T::class.java)
 }
