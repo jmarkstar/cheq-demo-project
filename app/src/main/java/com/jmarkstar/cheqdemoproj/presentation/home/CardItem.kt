@@ -7,13 +7,15 @@ import com.jmarkstar.cheqdemoproj.common.presentation.recyclerview.RecyclerItem
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CardItem(val bankName: String,
-                    val bankIcon: String,
-                    val balance: String,
-                    val spent: String,
-                    val income: String,
-                    val syncDate: String,
-                    val isAllAccount: Boolean = false) : Parcelable
+data class CardItem(
+    val bankName: String,
+    val bankIcon: String,
+    val balance: String,
+    val spent: String,
+    val income: String,
+    val syncDate: String,
+    val isAllAccount: Boolean = false
+) : Parcelable
 
 fun CardItem.toRecyclerItem() = RecyclerItem(this, R.layout.fragment_home_cards_item, BR.cardItem)
 

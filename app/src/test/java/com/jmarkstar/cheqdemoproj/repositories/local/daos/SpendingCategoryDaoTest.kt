@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltAndroidTest
 @UninstallModules(RepositoryModule::class)
 @ExperimentalCoroutinesApi
-class SpendingCategoryDaoTest: BaseTest() {
+class SpendingCategoryDaoTest : BaseTest() {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -37,8 +37,12 @@ class SpendingCategoryDaoTest: BaseTest() {
 
     @Test
     fun `test spending categories values`() = runBlocking {
-        Assert.assertTrue(fakeSpendingCategories.containsAll(spendingCategoryDao.getAllSpendingCategories()))
+        Assert.assertTrue(
+            fakeSpendingCategories.containsAll(
+                spendingCategoryDao.getAllSpendingCategories()
+            )
+        )
     }
 
-    //Add more unit test
+    // Add more unit test
 }

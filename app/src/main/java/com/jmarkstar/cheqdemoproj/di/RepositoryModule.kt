@@ -22,17 +22,17 @@ import net.sqlcipher.database.SupportFactory
 import javax.inject.Singleton
 
 /** I'm only using 1 module for the whole app because it's only a demo.
-* */
+ * */
 @Module
 @InstallIn(ApplicationComponent::class)
 // https://dagger.dev/hilt/components.html
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun bindsBalanceRepository(balanceRepositoryImpl: BalanceRepositoryImpl) : BalanceRepository
+    abstract fun bindsBalanceRepository(balanceRepositoryImpl: BalanceRepositoryImpl): BalanceRepository
 
     @Binds
-    abstract fun bindsTransactionRepository(transactionRepositoryImpl: TransactionRepositoryImpl) : TransactionRepository
+    abstract fun bindsTransactionRepository(transactionRepositoryImpl: TransactionRepositoryImpl): TransactionRepository
 
     companion object {
 
@@ -43,25 +43,31 @@ abstract class RepositoryModule {
         @Provides
         @Singleton
         fun provideSupportFactory(): SupportFactory? {
-            val passphrase: ByteArray = SQLiteDatabase.getBytes(Passphrases.dbPassphrase.toCharArray())
+            val passphrase: ByteArray =
+                SQLiteDatabase.getBytes(Passphrases.dbPassphrase.toCharArray())
             return if (BuildConfig.enableEncryption) SupportFactory(passphrase) else null
         }
 
         @Provides
         @Singleton
-        fun provideDatabase(@ApplicationContext appContext: Context,
-                            prepopulateCallback: PrepopulateCallback,
-                            supportFactory: SupportFactory? = null) =
-                Room.databaseBuilder(appContext,
-                        BeforePayDatabase::class.java,
-                        "before_pay.db")
-                        .openHelperFactory(supportFactory)
-                        .addCallback(prepopulateCallback)
-                        .build()
+        fun provideDatabase(
+            @ApplicationContext appContext: Context,
+            prepopulateCallback: PrepopulateCallback,
+            supportFactory: SupportFactory? = null
+        ) =
+            Room.databaseBuilder(
+                appContext,
+                BeforePayDatabase::class.java,
+                "before_pay.db"
+            )
+                .openHelperFactory(supportFactory)
+                .addCallback(prepopulateCallback)
+                .build()
 
         @Provides
         @Singleton
-        fun providePreferences(@ApplicationContext appContext: Context) = BeforePayPreferences(appContext)
+        fun providePreferences(@ApplicationContext appContext: Context) =
+            BeforePayPreferences(appContext)
 
         @Provides
         fun provideBankDao(database: BeforePayDatabase) = database.bankDao

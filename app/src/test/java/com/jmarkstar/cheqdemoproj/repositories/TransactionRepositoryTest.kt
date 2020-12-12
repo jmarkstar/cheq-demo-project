@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltAndroidTest
 @UninstallModules(RepositoryModule::class)
 @ExperimentalCoroutinesApi
-class TransactionRepositoryTest: BaseTest() {
+class TransactionRepositoryTest : BaseTest() {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -37,5 +37,5 @@ class TransactionRepositoryTest: BaseTest() {
         Assert.assertEquals(allExpensesByCategoryCount, expenses.size)
     }
 
-    //Add more unit test
+    // Add more unit test
 }

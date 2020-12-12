@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltAndroidTest
 @UninstallModules(RepositoryModule::class)
 @ExperimentalCoroutinesApi
-class TransactionDaoTest: BaseTest() {
+class TransactionDaoTest : BaseTest() {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -35,5 +35,5 @@ class TransactionDaoTest: BaseTest() {
         Assert.assertEquals(fakeTransactions.size, transactionDao.count())
     }
 
-    //Add more unit test
+    // Add more unit test
 }

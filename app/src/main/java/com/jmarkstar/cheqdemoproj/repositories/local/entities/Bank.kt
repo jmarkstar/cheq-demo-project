@@ -4,13 +4,17 @@ import android.content.ContentValues
 import androidx.room.Entity
 import androidx.room.Index
 
-@Entity(tableName = "banks",
+@Entity(
+    tableName = "banks",
     indices = [Index("name")],
-    primaryKeys = ["id"])
+    primaryKeys = ["id"]
+)
 
-data class Bank(val id: Int,
-                val name: String,
-                val localBankIcon: String) {
+data class Bank(
+    val id: Int,
+    val name: String,
+    val localBankIcon: String
+) {
 
     fun toContentValues() = ContentValues().apply {
         this.put("id", id)

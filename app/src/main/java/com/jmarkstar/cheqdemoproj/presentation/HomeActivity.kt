@@ -7,7 +7,7 @@ import com.jmarkstar.cheqdemoproj.databinding.ActivityHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity: BaseActivity<ActivityHomeBinding>() {
+class HomeActivity : BaseActivity<ActivityHomeBinding>() {
 
     override fun layoutId() = R.layout.activity_home
 

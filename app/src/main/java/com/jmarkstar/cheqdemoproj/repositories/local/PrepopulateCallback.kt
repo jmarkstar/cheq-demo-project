@@ -16,7 +16,11 @@ class PrepopulateCallback : RoomDatabase.Callback() {
             Timber.d("Populating spending_categories")
 
             fakeSpendingCategories.forEach {
-                db.insert(SPENDING_CATEGORY_TABLE, SQLiteDatabase.CONFLICT_REPLACE, it.toContentValues())
+                db.insert(
+                    SPENDING_CATEGORY_TABLE,
+                    SQLiteDatabase.CONFLICT_REPLACE,
+                    it.toContentValues()
+                )
             }
 
             Timber.d("Populating banks")
@@ -30,7 +34,6 @@ class PrepopulateCallback : RoomDatabase.Callback() {
             }
         } catch (ex: Exception) {
             Timber.e(ex)
-
         } finally {
             Timber.d("Population Finished")
         }
@@ -51,7 +54,6 @@ class PrepopulateCallback : RoomDatabase.Callback() {
             }
         } catch (ex: Exception) {
             Timber.e(ex)
-
         } finally {
             Timber.d("Re-population of transactions finished")
         }

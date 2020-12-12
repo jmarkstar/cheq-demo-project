@@ -28,7 +28,11 @@ fun setCardItem(view: BalanceCardView, cardItem: CardItem?) {
 }
 
 @BindingAdapter("items", "onItemClick")
-fun setRecyclerViewItems(recyclerView: RecyclerView, items: List<RecyclerItem>?, onItemClick: OnRecyclerItemClick?) {
+fun setRecyclerViewItems(
+    recyclerView: RecyclerView,
+    items: List<RecyclerItem>?,
+    onItemClick: OnRecyclerItemClick?
+) {
     var adapter = (recyclerView.adapter as? RecyclerViewAdapter)
     if (adapter == null) {
         adapter = RecyclerViewAdapter()

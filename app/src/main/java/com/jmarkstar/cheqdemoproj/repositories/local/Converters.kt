@@ -9,11 +9,11 @@ class Converters {
 
         @TypeConverter
         @JvmStatic
-        fun toTransactionType(code: Int): TransactionType = if (code == 0) TransactionType.SPENDING else TransactionType.INCOMING
+        fun toTransactionType(code: Int): TransactionType =
+            if (code == 0) TransactionType.SPENDING else TransactionType.INCOMING
 
         @TypeConverter
         @JvmStatic
         fun toInteger(status: TransactionType): Int = status.code
-
     }
 }

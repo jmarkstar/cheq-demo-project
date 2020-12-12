@@ -7,18 +7,28 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.jmarkstar.cheqdemoproj.models.TransactionType
 
-@Entity(tableName = "transactions",
+@Entity(
+    tableName = "transactions",
     indices = [Index("bankAccountId")],
-    foreignKeys = [ForeignKey(entity = BankAccount::class, parentColumns = arrayOf("id"),
-            childColumns = arrayOf("bankAccountId"), onDelete = ForeignKey.CASCADE)])
+    foreignKeys = [
+        ForeignKey(
+            entity = BankAccount::class,
+            parentColumns = arrayOf("id"),
+            childColumns = arrayOf("bankAccountId"),
+            onDelete = ForeignKey.CASCADE
+        )
+    ]
+)
 
-data class Transaction(@PrimaryKey(autoGenerate = true) val id: Int? = null,
-                       val bankAccountId: Int,
-                       val type: TransactionType,
-                       val amount: Double,
-                       val timestamp: Long,
-                       val syncTimestamp: Long,
-                       val spendingCategoryId: Int? = null) {
+data class Transaction(
+    @PrimaryKey(autoGenerate = true) val id: Int? = null,
+    val bankAccountId: Int,
+    val type: TransactionType,
+    val amount: Double,
+    val timestamp: Long,
+    val syncTimestamp: Long,
+    val spendingCategoryId: Int? = null
+) {
 
     fun toContentValues() = ContentValues().apply {
         if (id != null) this.put("id", id)

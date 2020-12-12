@@ -6,13 +6,14 @@ import com.jmarkstar.cheqdemoproj.models.Balance
 
 /* Bank Dao
 * */
-@Dao interface BankDao {
+@Dao
+interface BankDao {
 
     @Query("SELECT COUNT(id) FROM banks")
     suspend fun count(): Int
 
     @Query(
-            """
+        """
                 SELECT
                 b.name as bankName,
                 b.localBankIcon as bankIcon,
@@ -25,6 +26,7 @@ import com.jmarkstar.cheqdemoproj.models.Balance
                 INNER JOIN banks b ON ba.bankId = b.id
                 WHERE b.id = :bankId
                 GROUP BY ba.accountName, syncDatetime 
-            """)
+            """
+    )
     suspend fun getBalanceBy(bankId: Int): List<Balance>
 }

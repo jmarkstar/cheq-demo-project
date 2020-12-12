@@ -8,7 +8,7 @@ private const val CRASHLYTICS_KEY_PRIORITY = "priority"
 private const val CRASHLYTICS_KEY_TAG = "tag"
 private const val CRASHLYTICS_KEY_MESSAGE = "message"
 
-class CrashlyticsTree: Timber.Tree() {
+class CrashlyticsTree : Timber.Tree() {
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
 

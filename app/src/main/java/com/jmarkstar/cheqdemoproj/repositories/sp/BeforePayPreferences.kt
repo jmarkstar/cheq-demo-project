@@ -17,9 +17,9 @@ class BeforePayPreferences(context: Context) {
             "secret_$sharedPreferencesName",
             MasterKey.Builder(context, Passphrases.spPassphrase).build(),
             EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM)
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
     } else {
         context.getSharedPreferences(sharedPreferencesName, Context.MODE_PRIVATE)
     }
-
 }

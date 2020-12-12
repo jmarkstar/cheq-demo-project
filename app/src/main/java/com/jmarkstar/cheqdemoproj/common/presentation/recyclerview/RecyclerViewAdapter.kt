@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.BindingViewHolder>() {
+class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingViewHolder>() {
 
     var onItemClick: OnRecyclerItemClick? = null
 
@@ -20,7 +20,14 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.BindingViewH
     private fun getItem(position: Int) = items[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingViewHolder =
-            BindingViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false))
+        BindingViewHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                viewType,
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: BindingViewHolder, position: Int) {
         getItem(position).bind(holder.binding)
@@ -33,7 +40,8 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.BindingViewH
         notifyDataSetChanged()
     }
 
-    inner class BindingViewHolder(val binding: ViewDataBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class BindingViewHolder(val binding: ViewDataBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
                 onItemClick?.onItemClick(items[adapterPosition], binding.root)

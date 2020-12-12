@@ -17,14 +17,15 @@ import javax.inject.Inject
 @HiltAndroidTest
 @UninstallModules(RepositoryModule::class)
 @ExperimentalCoroutinesApi
-class BalanceRepositoryTest: BaseTest() {
+class BalanceRepositoryTest : BaseTest() {
 
     private val bankId = 1
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
-    @Inject lateinit var balanceRepository: BalanceRepository
+    @Inject
+    lateinit var balanceRepository: BalanceRepository
 
     override fun setUp() {
         super.setUp()
@@ -47,5 +48,5 @@ class BalanceRepositoryTest: BaseTest() {
         Assert.assertEquals(allBankBalancesCount, balances.size)
     }
 
-    //Add more unit test
+    // Add more unit test
 }

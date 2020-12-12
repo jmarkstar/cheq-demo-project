@@ -6,7 +6,8 @@ import com.jmarkstar.cheqdemoproj.repositories.local.entities.SpendingCategory
 
 /* SpendingCategory Dao
 * */
-@Dao interface SpendingCategoryDao {
+@Dao
+interface SpendingCategoryDao {
 
     @Query("SELECT COUNT(id) FROM spending_categories")
     suspend fun count(): Int

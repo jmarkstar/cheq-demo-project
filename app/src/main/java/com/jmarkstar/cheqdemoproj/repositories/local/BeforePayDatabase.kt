@@ -12,16 +12,18 @@ import com.jmarkstar.cheqdemoproj.repositories.local.daos.BankDao
 import com.jmarkstar.cheqdemoproj.repositories.local.daos.SpendingCategoryDao
 import com.jmarkstar.cheqdemoproj.repositories.local.daos.TransactionDao
 
-@Database(entities = [
-    Bank::class,
-    BankAccount::class,
-    SpendingCategory::class,
-    Transaction::class
-],
+@Database(
+    entities = [
+        Bank::class,
+        BankAccount::class,
+        SpendingCategory::class,
+        Transaction::class
+    ],
     version = 1,
-    exportSchema = false)
+    exportSchema = false
+)
 @TypeConverters(Converters::class)
-abstract class BeforePayDatabase: RoomDatabase() {
+abstract class BeforePayDatabase : RoomDatabase() {
 
     abstract val bankDao: BankDao
     abstract val bankAccountDao: BankAccountDao

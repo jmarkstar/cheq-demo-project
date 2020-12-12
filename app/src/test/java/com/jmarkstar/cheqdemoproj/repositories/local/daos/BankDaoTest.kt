@@ -17,12 +17,13 @@ import javax.inject.Inject
 @HiltAndroidTest
 @UninstallModules(RepositoryModule::class)
 @ExperimentalCoroutinesApi
-class BankDaoTest: BaseTest() {
+class BankDaoTest : BaseTest() {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
-    @Inject lateinit var bankDao: BankDao
+    @Inject
+    lateinit var bankDao: BankDao
 
     override fun setUp() {
         super.setUp()
@@ -35,5 +36,5 @@ class BankDaoTest: BaseTest() {
         assertEquals(fakeBanks.size, bankDao.count())
     }
 
-    //Add more unit test
+    // Add more unit test
 }

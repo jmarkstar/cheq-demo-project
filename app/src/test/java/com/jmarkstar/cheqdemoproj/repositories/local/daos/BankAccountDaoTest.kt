@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltAndroidTest
 @UninstallModules(RepositoryModule::class)
 @ExperimentalCoroutinesApi
-class BankAccountDaoTest: BaseTest() {
+class BankAccountDaoTest : BaseTest() {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -35,5 +35,5 @@ class BankAccountDaoTest: BaseTest() {
         Assert.assertEquals(fakeBankAccounts.size, bankAccountDao.count())
     }
 
-    //Add more unit test
+    // Add more unit test
 }

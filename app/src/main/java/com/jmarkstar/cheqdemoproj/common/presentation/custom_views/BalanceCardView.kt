@@ -10,7 +10,7 @@ import com.jmarkstar.cheqdemoproj.presentation.home.CardItem
 
 class BalanceCardView : LinearLayout {
 
-    private val binding = ViewBalanceCardBinding.inflate(LayoutInflater.from(context),this,false)
+    private val binding = ViewBalanceCardBinding.inflate(LayoutInflater.from(context), this, false)
 
     var cardItem: CardItem?
         get() = binding.cardItem
@@ -23,7 +23,11 @@ class BalanceCardView : LinearLayout {
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrSet: AttributeSet) : super(context, attrSet)
-    constructor(context: Context, attrSet: AttributeSet, defStyleAttr: Int) : super(context, attrSet, defStyleAttr)
+    constructor(context: Context, attrSet: AttributeSet, defStyleAttr: Int) : super(
+        context,
+        attrSet,
+        defStyleAttr
+    )
 
     init {
         orientation = VERTICAL

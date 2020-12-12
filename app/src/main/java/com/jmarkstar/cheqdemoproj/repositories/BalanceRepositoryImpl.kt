@@ -6,8 +6,10 @@ import javax.inject.Inject
 
 /** This repositories in returning the data directly, I'm not managing the errors.
  * */
-class BalanceRepositoryImpl @Inject constructor(private val bankDao: BankDao,
-                            private val bankAccountDao: BankAccountDao): BalanceRepository {
+class BalanceRepositoryImpl @Inject constructor(
+    private val bankDao: BankDao,
+    private val bankAccountDao: BankAccountDao
+) : BalanceRepository {
 
     override suspend fun getAllBankAccountsBalance() = bankAccountDao.getAllBalanceByAccountName()
 

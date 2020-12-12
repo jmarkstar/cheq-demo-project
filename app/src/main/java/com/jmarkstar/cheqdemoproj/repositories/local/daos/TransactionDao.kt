@@ -6,12 +6,14 @@ import com.jmarkstar.cheqdemoproj.models.Expense
 
 /* Transaction Dao
 * */
-@Dao interface TransactionDao {
+@Dao
+interface TransactionDao {
 
     @Query("SELECT COUNT(id) FROM transactions")
     suspend fun count(): Int
 
-    @Query("""
+    @Query(
+        """
             SELECT sc.name as spendingCategoryName, 
             sc.iconName as spendingCategoryIcon, 
             SUM(t.amount) as total,
@@ -21,6 +23,7 @@ import com.jmarkstar.cheqdemoproj.models.Expense
             INNER JOIN bank_accounts ba ON t.bankAccountId = ba.id 
             WHERE t.type = 0
             GROUP BY spendingCategoryName, registrationMonth
-    """)
+    """
+    )
     suspend fun getExpensesByMonthAndCategory(): List<Expense>
 }

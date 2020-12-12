@@ -14,7 +14,7 @@ import com.jmarkstar.cheqdemoproj.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment: BaseFragment<FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun layoutId() = R.layout.fragment_home
 
@@ -35,8 +35,9 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
             onItemClick = OnRecyclerItemClick { item, view ->
                 val cardItem = item.data as CardItem
                 val itemView = view as BalanceCardView
-                val action = HomeFragmentDirections.actionHomeCardDetails(cardItem, cardItem.bankName)
-                val fragmentNavExtras = FragmentNavigatorExtras( itemView to "balanceCardItem")
+                val action =
+                    HomeFragmentDirections.actionHomeCardDetails(cardItem, cardItem.bankName)
+                val fragmentNavExtras = FragmentNavigatorExtras(itemView to "balanceCardItem")
                 findNavController().navigate(action, fragmentNavExtras)
             }
         }

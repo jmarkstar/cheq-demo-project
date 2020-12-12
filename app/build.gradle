@@ -7,6 +7,7 @@ apply plugin: "com.google.gms.google-services"
 apply plugin: "com.google.firebase.crashlytics"
 apply plugin: "com.chrisney.enigma"
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "org.jlleitschuh.gradle.ktlint"
 apply from: '../jacoco.gradle'
 
 def keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -112,6 +113,12 @@ android {
 
 kapt {
     correctErrorTypes true
+}
+
+ktlint {
+    android.set(true)
+    debug.set(true)
+    outputColorName.set("RED")
 }
 
 //As OWASP suggestion, we need to prevent the reverse engineering of the apk. In this case, I'm encrypting a java class

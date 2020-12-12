@@ -18,6 +18,7 @@
 
         <!-- Customize your theme here. -->
         <item name="android:actionBarStyle">@style/ToolbarStyle</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="TextAppearance.Bold" parent="android:TextAppearance">

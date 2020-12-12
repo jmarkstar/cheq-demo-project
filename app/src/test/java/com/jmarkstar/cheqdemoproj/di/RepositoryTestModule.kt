@@ -2,7 +2,10 @@ package com.jmarkstar.cheqdemoproj.di
 
 import android.content.Context
 import androidx.room.Room
-import com.jmarkstar.cheqdemoproj.repositories.*
+import com.jmarkstar.cheqdemoproj.repositories.BalanceRepository
+import com.jmarkstar.cheqdemoproj.repositories.BalanceRepositoryImpl
+import com.jmarkstar.cheqdemoproj.repositories.TransactionRepository
+import com.jmarkstar.cheqdemoproj.repositories.TransactionRepositoryImpl
 import com.jmarkstar.cheqdemoproj.repositories.local.BeforePayDatabase
 import com.jmarkstar.cheqdemoproj.repositories.local.PrepopulateCallback
 import com.jmarkstar.cheqdemoproj.repositories.sp.BeforePayPreferences
@@ -14,16 +17,17 @@ import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(ApplicationComponent::class)
 abstract class RepositoryTestModule {
 
     @Binds
-    abstract fun bindsBalanceRepository(balanceRepositoryImpl: BalanceRepositoryImpl) : BalanceRepository
+    abstract fun bindsBalanceRepository(balanceRepositoryImpl: BalanceRepositoryImpl):
+        BalanceRepository
 
     @Binds
-    abstract fun bindsTransactionRepository(transactionRepositoryImpl: TransactionRepositoryImpl) : TransactionRepository
+    abstract fun bindsTransactionRepository(transactionRepositoryImpl: TransactionRepositoryImpl):
+        TransactionRepository
 
     companion object {
 
@@ -33,15 +37,18 @@ abstract class RepositoryTestModule {
 
         @Provides
         @Singleton
-        fun provideDatabase(@ApplicationContext appContext: Context,
-                            prepopulateCallback: PrepopulateCallback) =
+        fun provideDatabase(
+            @ApplicationContext appContext: Context,
+            prepopulateCallback: PrepopulateCallback
+        ) =
             Room.inMemoryDatabaseBuilder(appContext, BeforePayDatabase::class.java)
                 .addCallback(prepopulateCallback)
                 .build()
 
         @Provides
         @Singleton
-        fun providePreferences(@ApplicationContext appContext: Context) = BeforePayPreferences(appContext)
+        fun providePreferences(@ApplicationContext appContext: Context) =
+            BeforePayPreferences(appContext)
 
         @Provides
         fun provideBankDao(database: BeforePayDatabase) = database.bankDao

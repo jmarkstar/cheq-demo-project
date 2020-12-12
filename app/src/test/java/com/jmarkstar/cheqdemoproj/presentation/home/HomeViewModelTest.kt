@@ -12,7 +12,7 @@ import org.junit.Assert
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class HomeViewModelTest: BaseTest() {
+class HomeViewModelTest : BaseTest() {
 
     private val balanceRepository = mockk<BalanceRepository>()
 
@@ -28,7 +28,7 @@ class HomeViewModelTest: BaseTest() {
     @Test
     fun `test card item size with two banks success`() {
 
-        //given
+        // given
         val commBankName = "Commbank"
         val commBankIconName = "ic_commbank"
         val westpacName = "Westpac"
@@ -39,7 +39,12 @@ class HomeViewModelTest: BaseTest() {
         val westpacBalance1 = mockk<Balance>()
         val westpacBalance2 = mockk<Balance>()
 
-        val balances = arrayListOf(commBankBalance1, commBankBalance2, westpacBalance1, westpacBalance2)
+        val balances = arrayListOf(
+            commBankBalance1,
+            commBankBalance2,
+            westpacBalance1,
+            westpacBalance2
+        )
 
         every { commBankBalance1.bankName } returns commBankName
         every { commBankBalance1.bankIcon } returns commBankIconName
@@ -63,13 +68,13 @@ class HomeViewModelTest: BaseTest() {
 
         coEvery { balanceRepository.getAllBankAccountsBalance() } returns balances
 
-        //when
+        // when
         homeViewModel.balances.observeForever {}
         val resultSize = homeViewModel.balances.value?.size ?: 0
 
-        //then
+        // then
 
-        //allaccounts, westpac and commbank = 3
+        // allaccounts, westpac and commbank = 3
         Assert.assertEquals(3, resultSize)
     }
 }

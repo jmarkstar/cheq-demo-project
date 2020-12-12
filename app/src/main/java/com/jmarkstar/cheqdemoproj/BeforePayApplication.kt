@@ -9,7 +9,7 @@ import io.github.inflationx.viewpump.ViewPump
 import timber.log.Timber
 
 @HiltAndroidApp
-open class BeforePayApplication: Application() {
+open class BeforePayApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -21,7 +21,7 @@ open class BeforePayApplication: Application() {
     /** Shows logs only on the debug mode.
      * */
     private fun setupAppLogging() {
-        //As OWASP suggestions, we need to be careful logging data on release.
+        // As OWASP suggestions, we need to be careful logging data on release.
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
         Timber.plant(CrashlyticsTree())
     }

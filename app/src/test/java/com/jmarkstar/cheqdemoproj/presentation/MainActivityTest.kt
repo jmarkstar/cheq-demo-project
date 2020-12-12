@@ -1,34 +1,33 @@
 package com.jmarkstar.cheqdemoproj.presentation
 
-import androidx.test.espresso.Espresso
-import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.jmarkstar.cheqdemoproj.R
-import com.jmarkstar.cheqdemoproj.allBankAccountsBalanceCount
 import com.jmarkstar.cheqdemoproj.common.BaseTest
 import com.jmarkstar.cheqdemoproj.di.RepositoryModule
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
-import kotlinx.coroutines.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.*
+import org.junit.Assert
+import org.junit.Rule
+import org.junit.Test
+import org.junit.After
 
 @HiltAndroidTest
 @UninstallModules(RepositoryModule::class)
 @ExperimentalCoroutinesApi
-class MainActivityTest: BaseTest() {
+class MainActivityTest : BaseTest() {
 
-    @get:Rule val hiltRule = HiltAndroidRule(this)
+    @get:Rule
+    val hiltRule = HiltAndroidRule(this)
 
-    @get:Rule val activityRule = ActivityScenarioRule(HomeActivity::class.java)
+    @get:Rule
+    val activityRule = ActivityScenarioRule(HomeActivity::class.java)
 
     override fun setUp() {
         super.setUp()
         hiltRule.inject()
     }
-
 
     @Test
     fun `test instances`() = testMainDispatcher.runBlockingTest {
@@ -38,7 +37,7 @@ class MainActivityTest: BaseTest() {
             Assert.assertNotNull(it)
         }
     }
-/*
+    /*
     @Test
     fun `test textview`() {
 
